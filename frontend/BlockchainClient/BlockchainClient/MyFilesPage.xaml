@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlockchainClient.MyFilesPage"
+             Title="Мои файлы"
+             BackgroundColor="#101828">
+    <Grid Padding="18" RowDefinitions="Auto,*" RowSpacing="12">
+        <Button Text="Обновить"
+                Clicked="OnRefreshClicked"
+                BackgroundColor="#2E90FA"
+                TextColor="White"
+                CornerRadius="8" />
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Files}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="#182230"
+                            Stroke="#344054"
+                            StrokeThickness="1"
+                            Padding="14"
+                            Margin="0,0,0,10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="{Binding FileName}"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="#F8FAFC" />
+                            <Label Text="{Binding FileHash}"
+                                   FontSize="12"
+                                   TextColor="#FDB022"
+                                   LineBreakMode="CharacterWrap" />
+                            <Label Text="{Binding FileSizeText}"
+                                   TextColor="#98A2B3" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

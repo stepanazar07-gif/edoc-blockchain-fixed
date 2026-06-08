@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:BlockchainClient"
+            x:Class="BlockchainClient.MainTabbedPage"
+            BackgroundColor="#101828">
+    <local:ProfilePage Title="Профиль" />
+    <local:UploadPage Title="Загрузка" />
+    <local:MyDocumentsPage Title="Мои файлы" />
+    <local:UsersPage Title="Пользователи" />
+    <local:IncomingTransfersPage Title="Входящие" />
+    <local:DownloadedFilesPage Title="Полученные" />
+    <local:HistoryPage Title="История" />
+</TabbedPage>

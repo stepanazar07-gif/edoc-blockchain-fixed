@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="BlockchainClient.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:BlockchainClient"
+       Shell.FlyoutBehavior="Disabled"
+       Shell.NavBarIsVisible="True"
+       Title="eDoc Blockchain"
+       BackgroundColor="#101828"
+       ForegroundColor="#F8FAFC"
+       TitleColor="#F8FAFC"
+       Shell.TabBarBackgroundColor="#182230"
+       Shell.TabBarForegroundColor="#98A2B3"
+       Shell.TabBarTitleColor="#F8FAFC"
+       Shell.TabBarUnselectedColor="#667085">
+
+    <TabBar>
+        <ShellContent Title="Профиль"
+                      ContentTemplate="{DataTemplate local:ProfilePage}"
+                      Route="ProfilePage" />
+        <ShellContent Title="Загрузка"
+                      ContentTemplate="{DataTemplate local:UploadPage}"
+                      Route="UploadPage" />
+        <ShellContent Title="Мои файлы"
+                      ContentTemplate="{DataTemplate local:MyDocumentsPage}"
+                      Route="MyDocumentsPage" />
+        <ShellContent Title="Пользователи"
+                      ContentTemplate="{DataTemplate local:UsersPage}"
+                      Route="UsersPage" />
+        <ShellContent Title="Входящие"
+                      ContentTemplate="{DataTemplate local:IncomingTransfersPage}"
+                      Route="IncomingTransfersPage" />
+        <ShellContent Title="Полученные"
+                      ContentTemplate="{DataTemplate local:DownloadedFilesPage}"
+                      Route="DownloadedFilesPage" />
+        <ShellContent Title="История"
+                      ContentTemplate="{DataTemplate local:HistoryPage}"
+                      Route="HistoryPage" />
+        <ShellContent Title="Выход"
+                      ContentTemplate="{DataTemplate local:LogoutPage}"
+                      Route="LogoutPage" />
+    </TabBar>
+</Shell>

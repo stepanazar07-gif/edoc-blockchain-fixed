@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlockchainClient.ProfilePage"
+             Title="Профиль"
+             BackgroundColor="#101828">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Border BackgroundColor="#182230"
+                    Stroke="#2E90FA"
+                    StrokeThickness="1"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                    <Border WidthRequest="112"
+                            HeightRequest="112"
+                            Stroke="#475467"
+                            BackgroundColor="#101828">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="56" />
+                        </Border.StrokeShape>
+                        <Image x:Name="AvatarImage"
+                               Aspect="AspectFill" />
+                    </Border>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="8" VerticalOptions="Center">
+                        <Label x:Name="NameLabel"
+                               Text="Имя"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#F8FAFC" />
+                        <Label x:Name="PhoneLabel"
+                               Text="Телефон"
+                               TextColor="#98A2B3" />
+                        <Button Text="Загрузить аватар"
+                                Clicked="OnAvatarClicked"
+                                BackgroundColor="#F79009"
+                                TextColor="White"
+                                CornerRadius="8" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#182230"
+                    Stroke="#344054"
+                    StrokeThickness="1"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Данные аккаунта"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#F8FAFC" />
+                    <Label x:Name="IdLabel"
+                           TextColor="#D0D5DD"
+                           LineBreakMode="CharacterWrap" />
+                    <Label x:Name="AgeLabel"
+                           TextColor="#D0D5DD" />
+                    <Label x:Name="CreatedLabel"
+                           TextColor="#D0D5DD" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlockchainClient.MyDocumentsPage"
+             Title="Мои файлы"
+             BackgroundColor="#101828">
+    <Grid Padding="18" RowDefinitions="Auto,*" RowSpacing="12">
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+            <Label Text="Личное хранилище"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="#F8FAFC"
+                   VerticalOptions="Center" />
+            <Button Grid.Column="1"
+                    Text="Обновить"
+                    Clicked="OnRefreshClicked"
+                    BackgroundColor="#2E90FA"
+                    TextColor="White"
+                    CornerRadius="8" />
+        </Grid>
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Documents}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="#182230"
+                            Stroke="#344054"
+                            StrokeThickness="1"
+                            Padding="14"
+                            Margin="0,0,0,10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <Label Text="{Binding FileName}"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="#F8FAFC"
+                                   LineBreakMode="TailTruncation" />
+                            <Button Grid.Column="1"
+                                    Text="Отправить"
+                                    Clicked="OnSendClicked"
+                                    BackgroundColor="#F79009"
+                                    TextColor="White"
+                                    CornerRadius="8" />
+
+                            <Label Grid.Row="1"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding FileHash}"
+                                   FontSize="12"
+                                   TextColor="#FDB022"
+                                   LineBreakMode="CharacterWrap" />
+
+                            <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*">
+                                <Label Text="{Binding UploadDate}"
+                                       TextColor="#D0D5DD" />
+                                <Label Grid.Column="1"
+                                       Text="{Binding UploadTime}"
+                                       TextColor="#D0D5DD"
+                                       HorizontalTextAlignment="Center" />
+                                <Label Grid.Column="2"
+                                       Text="{Binding FileSizeText}"
+                                       TextColor="#D0D5DD"
+                                       HorizontalTextAlignment="End" />
+                            </Grid>
+
+                            <Label Grid.Row="3"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding UploadedBy}"
+                                   TextColor="#12B76A" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                    <Label Text="В хранилище пока нет файлов."
+                           TextColor="#98A2B3"
+                           HorizontalTextAlignment="Center" />
+                    <Button Text="Перейти к загрузке"
+                            Clicked="OnUploadClicked"
+                            BackgroundColor="#12B76A"
+                            TextColor="White"
+                            CornerRadius="8" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+</ContentPage>

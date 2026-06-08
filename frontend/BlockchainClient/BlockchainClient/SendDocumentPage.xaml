@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlockchainClient.SendDocumentPage"
+             Title="Отправка файла"
+             BackgroundColor="#101828">
+    <ScrollView>
+        <VerticalStackLayout Padding="18" Spacing="14">
+            <Border BackgroundColor="#182230"
+                    Stroke="#344054"
+                    StrokeThickness="1"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Файл из моего хранилища"
+                           TextColor="#F8FAFC"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+                    <Picker x:Name="FilePicker"
+                            Title="Выберите файл"
+                            ItemDisplayBinding="{Binding FileName}"
+                            TextColor="#F8FAFC"
+                            BackgroundColor="#101828" />
+                    <Label x:Name="FileHashLabel"
+                           Text=""
+                           TextColor="#FDB022"
+                           LineBreakMode="CharacterWrap" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="#182230"
+                    Stroke="#344054"
+                    StrokeThickness="1"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Получатель"
+                           TextColor="#F8FAFC"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+                    <Picker x:Name="UserPicker"
+                            Title="Выберите ID получателя"
+                            ItemDisplayBinding="{Binding Id}"
+                            TextColor="#F8FAFC"
+                            BackgroundColor="#101828" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Отправить"
+                    Clicked="OnSendDocumentClicked"
+                    BackgroundColor="#12B76A"
+                    TextColor="White"
+                    CornerRadius="8" />
+
+            <Label x:Name="ResultLabel"
+                   Text=""
+                   TextColor="#D0D5DD"
+                   LineBreakMode="WordWrap" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
