@@ -98,7 +98,7 @@ func (b *Block) Validate(prevBlock *Block) error {
     }
 
     for _, tx := range b.Transactions {
-        if !tx.Verify("mysecret") {   // ← здесь заменил "" на "mysecret"
+        if !tx.Verify("coursework-demo-key") {
             return fmt.Errorf("недействительная транзакция")
         }
     }
