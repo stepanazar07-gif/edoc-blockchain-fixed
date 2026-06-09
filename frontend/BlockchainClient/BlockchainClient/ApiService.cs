@@ -7,7 +7,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.Maui.Devices;
 using Microsoft.Maui.Storage;
 
 namespace BlockchainClient
@@ -39,9 +38,7 @@ namespace BlockchainClient
                 return;
             }
 
-            _baseUrl = DeviceInfo.Platform == DevicePlatform.Android
-                ? "http://10.0.2.2:8080"
-                : "http://127.0.0.1:8080";
+            _baseUrl = "http://186.246.31.220:18080";
         }
 
         public async Task<string?> RegisterAsync(string name, int age, string phone, string password)
@@ -112,6 +109,7 @@ namespace BlockchainClient
         public async Task<UploadResult?> UploadDocumentAsync(string fileName, byte[] fileBytes, string mimeType)
         {
             await AddTokenAsync();
+            LastError = "";
 
             using var form = new MultipartFormDataContent();
             var fileContent = new ByteArrayContent(fileBytes);
@@ -120,8 +118,12 @@ namespace BlockchainClient
             form.Add(new StringContent(fileName), "title");
 
             var response = await _httpClient.PostAsync($"{_baseUrl}/document", form);
-            if (!response.IsSuccessStatusCode) return null;
             var body = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                LastError = string.IsNullOrWhiteSpace(body) ? response.ReasonPhrase ?? "Upload failed" : body.Trim();
+                return null;
+            }
             return JsonSerializer.Deserialize<UploadResult>(body, JsonOptions);
         }
 

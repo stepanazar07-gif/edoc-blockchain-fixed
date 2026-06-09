@@ -1,0 +1,32 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Env / local overrides
+.env
+*.local
+
+# Logs
+*.log
+
+# .NET / MAUI build artifacts
+**/bin/
+**/obj/
+**/.vs/
+**/*.user
+**/*.suo
+
+# Backend uploads/runtime files
+backend/uploads/
+uploads/
+
+# Go build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+

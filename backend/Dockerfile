@@ -9,9 +9,8 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /out/edoc-server ./cmd/ser
 
 FROM alpine:3.22
 
-RUN addgroup -S app && adduser -S -G app app
 WORKDIR /app
-RUN mkdir -p /app/uploads && chown -R app:app /app
+RUN mkdir -p /app/uploads
 
 COPY --from=builder /out/edoc-server /app/edoc-server
 
@@ -21,5 +20,4 @@ ENV UPLOAD_DIR=/app/uploads
 
 EXPOSE 8080 8001
 
-USER app
 ENTRYPOINT ["/app/edoc-server"]

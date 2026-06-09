@@ -63,7 +63,10 @@ namespace BlockchainClient
                 var result = await _api.UploadDocumentAsync(_fileName, _fileBytes, _mimeType);
                 if (result == null)
                 {
-                    await DisplayAlert("Ошибка", "Сервер не принял файл.", "OK");
+                    var errorText = string.IsNullOrWhiteSpace(_api.LastError)
+                        ? "Сервер не принял файл."
+                        : _api.LastError;
+                    await DisplayAlert("Ошибка", errorText, "OK");
                     return;
                 }
 
