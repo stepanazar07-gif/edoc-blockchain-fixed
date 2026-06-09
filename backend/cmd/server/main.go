@@ -14,7 +14,7 @@ import (
 func main() {
 	apiPort := getEnvInt("API_PORT", 8080)
 	p2pAddr := getEnv("P2P_ADDR", "localhost:8001")
-	connStr := getEnv("DATABASE_URL", "postgres://postgres:azar247911@localhost:5433/blockchain?sslmode=disable")
+	connStr := getEnv("DATABASE_URL", "postgres://p2p_user:p2p_password_change_me@127.0.0.1:5432/stepa_db?sslmode=disable")
 
 	// -------------------- ХРАНИЛИЩЕ И БЛОКЧЕЙН --------------------
 	store, err := blockchain.NewPostgresStorage(connStr)

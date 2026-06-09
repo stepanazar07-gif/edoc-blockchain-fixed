@@ -28,7 +28,14 @@ namespace BlockchainClient
         {
             if (!string.IsNullOrWhiteSpace(baseUrl))
             {
-                _baseUrl = baseUrl;
+                _baseUrl = NormalizeBaseUrl(baseUrl);
+                return;
+            }
+
+            var envBaseUrl = Environment.GetEnvironmentVariable("EDOC_API_URL");
+            if (!string.IsNullOrWhiteSpace(envBaseUrl))
+            {
+                _baseUrl = NormalizeBaseUrl(envBaseUrl);
                 return;
             }
 
@@ -241,6 +248,11 @@ namespace BlockchainClient
         {
             var ext = Path.GetExtension(fileName).ToLowerInvariant();
             return ext == ".png" ? "image/png" : "image/jpeg";
+        }
+
+        private static string NormalizeBaseUrl(string url)
+        {
+            return url.Trim().TrimEnd('/');
         }
     }
 }
